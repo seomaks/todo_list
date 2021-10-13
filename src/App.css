@@ -1,0 +1,21 @@
+.App {
+  padding: 30px;
+  display: flex;
+}
+
+.App > div {
+  margin-right: 50px;
+}
+
+.active-filter {
+  background-color: cadetblue;
+}
+
+.error {
+  border: 3px solid red;
+  outline: none;
+}
+
+.done {
+  opacity: 0.5;
+}
