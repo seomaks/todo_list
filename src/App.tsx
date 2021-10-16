@@ -32,31 +32,17 @@ function App() {
     setTasks(updatedTasks)
   }
 
-//устанавливаем use state
-  const [filter, setFilter] = useState<FilterValuesType>("all");
-  let tasksForTodolist = tasks;
-  //устанавливаем остальные фильтры (активные таски и завершенные)
-  if (filter === "active") {
-    tasksForTodolist = tasks.filter(t => t.isDone === false);
-  }
-  if (filter === "completed") {
-    tasksForTodolist = tasks.filter(t => t.isDone === true);
-  }
 
-//написали ф-цию фильтрации
-  function changeFilter(value: FilterValuesType) {
-    setFilter(value);
-  }
 
   return (
     <div className="App">
       <Todolist title="What to learn"
-                tasks={tasksForTodolist}
-                filter={filter}
+                tasks={tasks}
+           //     filter={filter}
                 removeTask={removeTask}
                 addTask={addTask}
         //вывели фильтр на страницу
-                changeFilter={changeFilter}
+              //  changeFilter={changeFilter}
                 changeTaskStatus={changeTaskStatus}
       />
     </div>
