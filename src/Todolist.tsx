@@ -1,5 +1,6 @@
 import React, {useState, KeyboardEvent, ChangeEvent} from 'react';
 import {FilterValuesType} from "./App";
+import Button from "./components/Button";
 
 export type TaskType = {
   id: string
@@ -90,7 +91,7 @@ props.changeFilter(props.todolistId, value)
     </ul>
     <div>
 
-      <button
+{/*      <button
         className={allBtnClass}
         onClick={()=>onClickHandlerFilter('all')}>All
       </button>
@@ -101,7 +102,11 @@ props.changeFilter(props.todolistId, value)
       <button
         className={completedBtnClass}
         onClick={()=>onClickHandlerFilter('completed')}>Completed
-      </button>
+      </button>*/}
+
+      <Button callBack={()=> onClickHandlerFilter('all')} name={'all'}/>
+      <Button callBack={()=> onClickHandlerFilter('active')} name={'active'}/>
+      <Button callBack={()=> onClickHandlerFilter('completed')} name={'completed'}/>
 
     </div>
   </div>
