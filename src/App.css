@@ -7,15 +7,22 @@
   margin-right: 50px;
 }
 
-.active-filter {
-  background-color: cadetblue;
-}
-
 .error {
-  border: 3px solid red;
-  outline: none;
+  border: red 1px solid;
 }
 
-.done {
+.error-message {
+  color: red;
+}
+
+.activeFilter {
+  background-color: aquamarine;
+}
+
+/*.activeFilter:focus {*/
+/*  background-color: aquamarine;*/
+/*}*/
+
+.is-done {
   opacity: 0.5;
 }

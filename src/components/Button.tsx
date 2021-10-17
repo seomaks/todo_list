@@ -1,17 +1,20 @@
-import React from "react";
+import React from 'react';
+import './../App.css';
 
 type propsType = {
   callBack: () => void
-  name: string
+  name:string
+  filter?:string
 }
+
 
 const Button = (props: propsType) => {
   const onClickHandler = () => {
-props.callBack()
+    props.callBack()
   }
   return (
-    <button onClick={onClickHandler}>{props.name}</button>
+    <button className={props.filter === props.name ? "activeFilter" : ""} onClick={onClickHandler}>{props.name}</button>
   );
 };
 
-export default Button
+export default Button;
