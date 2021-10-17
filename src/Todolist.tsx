@@ -16,6 +16,7 @@ type PropsType = {
   changeTaskStatus: (todolistId: string, taskID: string, isDone: boolean) => void
   removeTask: (todolistId: string, taskId: string) => void
   changeFilter: (todolistId: string, value: FilterValuesType) => void
+  removeTodoList: (todolistId: string) => void
 
 }
 
@@ -59,16 +60,20 @@ export function Todolist(props: PropsType) {
     setError(false)
   }
 
-  const onAllClickHandler = () => props.changeFilter(props.todolistId,"all")
-  const onActiveClickHandler = () => props.changeFilter(props.todolistId,"active")
-  const onCompleteClickHandler = () => props.changeFilter(props.todolistId,"completed")
+  const onAllClickHandlerForRemoveTodoList = () => props.removeTodoList(props.todolistId)
+
+  const onClickHandlerFilter =(value:FilterValuesType) => {
+props.changeFilter(props.todolistId, value)
+  }
 
   const allBtnClass = props.filter === "all" ? "active-filter" : ""
   const activeBtnClass = props.filter === "active" ? "active-filter" : ""
   const completedBtnClass = props.filter === "completed" ? "active-filter" : ""
 
   return <div>
+    <div>
     <h3>{props.title}</h3>
+    <button onClick={onAllClickHandlerForRemoveTodoList}>x</button></div>
     <div>
       <input
         placeholder={"Give me a task please"}
@@ -84,18 +89,20 @@ export function Todolist(props: PropsType) {
       {taskJSXElement}
     </ul>
     <div>
+
       <button
         className={allBtnClass}
-        onClick={onAllClickHandler}>All
+        onClick={()=>onClickHandlerFilter('all')}>All
       </button>
       <button
         className={activeBtnClass}
-        onClick={onActiveClickHandler}>Active
+        onClick={()=>onClickHandlerFilter('active')}>Active
       </button>
       <button
         className={completedBtnClass}
-        onClick={onCompleteClickHandler}>Completed
+        onClick={()=>onClickHandlerFilter('completed')}>Completed
       </button>
+
     </div>
   </div>
 }
