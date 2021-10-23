@@ -15,13 +15,9 @@
   color: red;
 }
 
-.activeFilter {
+.active-filter {
   background-color: aquamarine;
 }
-
-/*.activeFilter:focus {*/
-/*  background-color: aquamarine;*/
-/*}*/
 
 .is-done {
   opacity: 0.5;
