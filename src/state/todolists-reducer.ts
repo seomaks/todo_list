@@ -3,7 +3,7 @@ import {v1} from "uuid";
 
 
 
-export const todolistsReducer =(state: Array<TodolistType>, action: ActionsType) => {
+export const todolistsReducer =(state: Array<TodolistType>, action: ActionsType): Array<TodolistType> => {
   switch (action.type) {
     case 'REMOVE-TODOLIST': {
       return state.filter(f => f.id !== action.id)
