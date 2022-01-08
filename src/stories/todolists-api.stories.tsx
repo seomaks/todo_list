@@ -98,3 +98,25 @@ export const CreateTask = () => {
 
   return <div> {JSON.stringify(state)}</div>
 }
+
+export const UpdateTask = () => {
+  const [state, setState] = useState<any>(null)
+  useEffect(() => {
+    const todolistId = 'ace1a6b7-5e2a-4e94-a808-2cd2d26ba3a3'
+    const taskId = '252f23b6-29fa-471a-b7bc-edd3f5d250a8'
+
+    todolistAPI.updateTask(todolistId, taskId, {
+      title: 'backlinks',
+      description: 'buy it',
+      status: 3,
+      priority: 0,
+      startDate: '',
+      deadline: ''
+    })
+      .then((res) => {
+        setState(res.data);
+      })
+  }, [])
+
+  return <div> {JSON.stringify(state)}</div>
+}

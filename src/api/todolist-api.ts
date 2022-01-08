@@ -34,11 +34,19 @@ export type ResponseType<D = {}> = {
   data: D
 }
 
+type UpdateTaskModelType = {
+  title: string
+  description: string
+  status: number
+  priority: number
+  startDate: string
+  deadline: string
+}
+
 const instance = axios.create({
   baseURL: 'https://social-network.samuraijs.com/api/1.1/',
   withCredentials: true,
   headers: {
-    // Не забываем заменить API-KEY на собственный
     'API-KEY': '0c074aaa-aceb-492d-a73f-9ca4f6d5a703'
   }
 })
@@ -63,6 +71,9 @@ export const todolistAPI = {
     return instance.delete<ResponseType>(`todo-lists/${todolistId}/tasks/${taskId}`)
   },
   createTask(todolistId: string, title: string) {
-    return instance.post(`todo-lists/${todolistId}/tasks`, {title})
+    return instance.post<ResponseType<TaskType>>(`todo-lists/${todolistId}/tasks`, {title})
   },
+  updateTask(todolistId: string, taskId: string, model: UpdateTaskModelType) {
+    return  instance.put<ResponseType<TaskType>>(`todo-lists/${todolistId}/tasks/${taskId}`, model)
+  }
 }
